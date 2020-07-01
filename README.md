@@ -12,7 +12,7 @@ authors:
  - name: "Manjula G. Hosurmath"
    email: "mhosurma@in.ibm.com"
 
-completed_date: 2020-01-20
+completed_date: 2020-07-03
 
 components:
 - slug: "Crunchy PostgreSQL for Kubernetes"
