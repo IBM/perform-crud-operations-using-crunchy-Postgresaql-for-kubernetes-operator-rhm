@@ -131,6 +131,7 @@ In this tutorial you have learnt the basics of how to use `Crunchy postgreSQL fo
 
 # Reference
 
-You can refer the following documentation from [Cockroach labs](https://www.cockroachlabs.com) to learn more about the operator and its features.
-  - https://www.cockroachlabs.com/docs/stable/demo-json-support.html
+The documentation for [Crunchy PostgreSQL Operator](https://access.crunchydata.com/) is available at,
+
+  - https://access.crunchydata.com/documentation/postgres-operator/latest/
 
