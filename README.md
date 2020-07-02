@@ -191,6 +191,8 @@ Forwarding from [::1]:5050 -> 5050
 
 ![](doc/source/images/view.png)
 
+>NOTE: You can view this table after each CRUD operation performed in notebook in order to visualize the changes.
+
 ![](doc/source/images/results.png) 
 
 # Summary
