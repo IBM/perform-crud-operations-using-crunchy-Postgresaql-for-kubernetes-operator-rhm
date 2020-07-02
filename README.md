@@ -136,6 +136,11 @@ $ pgo create pgadmin hippo
 $ kubectl port-forward -n pgo svc/hippo-pgadmin 5050:5050 
 ```
 
+```
+Forwarding from 127.0.0.1:5050 -> 5050
+Forwarding from [::1]:5050 -> 5050
+```
+
 - Open <http://localhost:5050> on your browser and use your database username (e.g. `hippo`) and password (e.g. `datalake`) to log in.
 
 ![](doc/source/images/login-pgo.png) 
@@ -148,6 +153,45 @@ $ kubectl port-forward -n pgo svc/hippo-pgadmin 5050:5050
 
 ### Step 4: Perform CRUD Operations on CrunchyDB using python
 
+- Once we have the CrunchyDB UP and running, `user` and `database` created, we can now explore the CRUD operations on Crunchy PostgreSQL in a python runtime using Jupyter Notebook.
+
+- In Terminal run the following command to port forward `5432` port from the OpenShift cluster which we will be using in our Jupyter Notebook to establish a connection with the Crunchy PostgreSQL instance.
+```bash
+$ kubectl port-forward -n pgo svc/hippo 5432:5432 
+```
+
+```
+Forwarding from 127.0.0.1:5432 -> 5432
+Forwarding from [::1]:5432 -> 5432
+```
+
+- We will be working with Jupyter Notebook, you can use tools like [Anaconda](https://www.anaconda.com/products/individual) to open the Jupyter Notebook or [install Jupyter Notebook from python-pip](https://jupyter.org/install).
+
+- Download and open the notebook [CrunchyDB CRUD Operations.ipynb](CrunchyDB%20CRUD%20Operations.ipynb) in your local machine.
+
+- Click on the **Cell** tab and click on **Run All** as shown.
+
+![](doc/source/images/run.png)
+
+- You can now follow the notebook instructions for more details on what is happening in each cell.
+
+- After we have execuited the notebook, we can verify the table in the pgAdmin 4 console. 
+
+- - To access pgAdmin 4, you can set up a `port-forward` to the Service, which follows the pattern `<clusterName>-pgadmin`, to port `5050`:
+```bash
+$ kubectl port-forward -n pgo svc/hippo-pgadmin 5050:5050 
+```
+
+```
+Forwarding from 127.0.0.1:5050 -> 5050
+Forwarding from [::1]:5050 -> 5050
+```
+
+- In the pgAdmin 4 console, expand your `cluster` (eg: in our case `cpdemo`), expand `Databases`, expand `database_name`, expand `Schemas`, expand `username` (eg: in our case `hippo`), expand `Tables`, you can now see the `accounts` table that we created from the notebook. Right click on the `accounts` table and select **View/Edit Data > All Rows** and the table with all rows will be displayed as shown.
+
+![](doc/source/images/view.png)
+
+![](doc/source/images/results.png) 
 
 # Summary
 
