@@ -119,11 +119,11 @@ Completing this tutorial should take about 30 minutes.
 
 # Steps
 
-### Step 1: Get the Code
-### Step 2: Deploy CrunchyDB Operator on OpenShift Cluster
-### Step 3: Create a CrunchyDB cluster and database
-### Step 4: Access the cluster on your localhost
-### Step 5: Perform CRUD Operations on CrunchyDB using python
+### Step 1: Deploy CrunchyDB Operator on OpenShift Cluster
+### Step 2: Create a CrunchyDB cluster and database
+### Step 3: Access the cluster on your localhost
+### Step 4: Perform CRUD Operations on CrunchyDB using python
+
 
 # Summary
 
