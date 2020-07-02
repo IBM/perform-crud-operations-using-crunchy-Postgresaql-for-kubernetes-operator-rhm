@@ -122,6 +122,30 @@ Completing this tutorial should take about 30 minutes.
 ### Step 1: Deploy CrunchyDB Operator on OpenShift Cluster
 ### Step 2: Create a CrunchyDB cluster and database
 ### Step 3: Access the cluster on your localhost
+
+- Let us view the results of the commands we ran in the earlier steps via the pgAdmin 4 console. The console can be accessed at localhost with port forwarding.
+
+- Run the following command in Terminal:
+```bash
+$ pgo create pgadmin hippo
+```
+- This creates a pgAdmin 4 deployment unique to this PostgreSQL cluster and synchronizes the PostgreSQL user information into it.
+
+- To access pgAdmin 4, you can set up a `port-forward` to the Service, which follows the pattern `<clusterName>-pgadmin`, to port `5050`:
+```bash
+$ kubectl port-forward -n pgo svc/hippo-pgadmin 5050:5050 
+```
+
+- Open <http://localhost:5050> on your browser and use your database username (e.g. `hippo`) and password (e.g. `datalake`) to log in.
+
+![](doc/source/images/login-pgo.png) 
+
+(Note: if your password does not appear to work, you can retry setting up the user with the [pgo update](https://access.crunchydata.com/documentation/postgres-operator/4.3.2/pgo-client/reference/pgo_update_user/) user command: `pgo update user -n pgo --username=hippo --password=datalake hippo`)
+
+- Once logged in, you can see the pgAdmin 4 console as shown.
+
+![](doc/source/images/pgadmin4.png)
+
 ### Step 4: Perform CRUD Operations on CrunchyDB using python
 
 
