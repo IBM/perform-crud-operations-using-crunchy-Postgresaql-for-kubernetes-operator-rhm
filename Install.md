@@ -85,7 +85,7 @@ We need to create a project to be used and managed from command line. Click on C
 
 Navigate to OpenShift web console which was launched during previous step. Select operatorhub under Operators and type FP in the search bar and hit 
 
-![](doc/source/images/install-operator.png)
+![](doc/source/images/install-operator1.png)
 
 Click on Fp Predict Plus Operator (non custom) and hit install.
 
