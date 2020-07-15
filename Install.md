@@ -89,7 +89,7 @@ Navigate to OpenShift web console which was launched during previous step. Selec
 
 Click on Fp Predict Plus Operator (non custom) and hit install.
 
-![](doc/source/images/select-install.png)
+![](doc/source/images/install.png)
 
 `Note` :- This is a trial instance with the following constraints per below.
 
@@ -99,7 +99,7 @@ Click on Fp Predict Plus Operator (non custom) and hit install.
 
 Create Operator Subscription by choosing All namespaces or specific namespace (select findability-project) and hit subscribe.
 
-![](doc/source/images/subscribe.png)
+![](doc/source/images/subscribe1.png)
 
 After a couple of minutes, the operator gets installed on the cluster. We can verify by clicking on Installed Operators under `Operators` and see that the operator is successfully installed with status showing as Succeeded.
 
