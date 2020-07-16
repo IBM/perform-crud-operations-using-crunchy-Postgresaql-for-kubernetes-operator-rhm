@@ -99,5 +99,16 @@ After a couple of minutes, the operator gets installed on the cluster. We can ve
 
 ![](doc/source/images/installed-operator.png)
 
+## Connect to the Openshift Cluster in CLI (command Line Interface)
 
-### This concludes, how to install and get started using the Crunchy Postgres operator on RedHat OpenShift cluster
+- Login to the ROKS(IBM Managed) Openshift cluster through CLI(command line Iterface). 
+To login you would require token which can be genrated after you login to Openshift Cluster web console. See below screenshot to `copy the path`.
+![](doc/source/images/Login-CopyCommand.png)
+
+- A new window will open with the login token details. See below screenshot for details. Copy the login token as per the below screenshot.
+![](doc/source/images/Login-Token.png)
+
+- Once you login you would see a similar screen as shown below.
+![](doc/source/images/CLI-Login.png)
+
+### This concludes, how to configure and get started using the Crunchy Postgres operator on RedHat OpenShift cluster
