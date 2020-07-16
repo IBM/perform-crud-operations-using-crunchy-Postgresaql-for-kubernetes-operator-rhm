@@ -121,6 +121,12 @@ Completing this tutorial should take about 30 minutes.
 
 ### Step 1: Deploy CrunchyDB Operator on OpenShift Cluster
 
+- Login to the ROKS cluster through CLI(command line Iterface). To login you would require token which can be genrated after you login to Openshift Cluster web console. See below screenshot to `copy the path`.
+![](doc/source/images/Login-CopyCommand.png)
+
+- A new window will open with the login token details. See below screenshot for details.
+![](doc/source/images/Login-Token.png)
+
 - Use the new namespace where we have isntalled the Crunchy Postgres operator.
 - Run the below command in CLI(command line Iterface)
 ``oc create -f postgres-operator.yml, wait for the pod state to change to complete state.
