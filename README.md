@@ -121,11 +121,13 @@ Completing this tutorial should take about 30 minutes.
 
 ### Step 1: Deploy CrunchyDB Operator on OpenShift Cluster
 
-- Create a new namespace (postgres-ibm)
-Run, oc create -f postgres-operator.yml, wait for the pod state to change to complete state.
+- Use the new namespace where we have isntalled the Crunchy Postgres operator.
+- Run the below command in CLI(command line Iterface)
+``oc create -f postgres-operator.yml, wait for the pod state to change to complete state.
 oc get po
 NAME               READY   STATUS      RESTARTS   AGE
 pgo-deploy-zl6sz   0/1     Completed   0          24h
+``
 3. check for the logs and be sure there are no errors in the ansible script.
 4. switch to pgo namespace.
 5. Edit pgo-config configmap and update DisableFSGroup to false .
