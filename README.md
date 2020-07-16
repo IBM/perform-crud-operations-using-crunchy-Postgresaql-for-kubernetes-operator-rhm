@@ -218,54 +218,41 @@ To login you would require token which can be genrated after you login to Opensh
 - Once you login you would see a similar screen as shown below.
 ![](doc/source/images/CLI-Login.png)
 
-### This concludes, how to configure and get started using the Crunchy Postgres operator on RedHat OpenShift cluster
 
+### Step 3: Create and Deploy CrunchyDB Operator on OpenShift Cluster and Create a database.
 
-
-### Step 2: Connect to the Openshift Cluster in CLI (command Line Interface)
-
-- Login to the ROKS(IBM Managed) Openshift cluster through CLI(command line Iterface). 
-To login you would require token which can be genrated after you login to Openshift Cluster web console. See below screenshot to `copy the path`.
-![](doc/source/images/Login-CopyCommand.png)
-
-- A new window will open with the login token details. See below screenshot for details. Copy the login token as per the below screenshot.
-![](doc/source/images/Login-Token.png)
-
-- Once you login you would see a similar screen as shown below.
-![](doc/source/images/CLI-Login.png)
-
-### Step 3: Deploy CrunchyDB Operator on OpenShift Cluster
-
-- Use the new namespace where we have isntalled the Crunchy Postgres operator.
-- Run the below command in CLI(command line Iterface)
+- (i). Use the new namespace where we have isntalled the Crunchy Postgres operator.
+- (ii). Run the below command in CLI(command line Iterface). Once it runs successfully, check for the logs and be sure there are no errors in the ansible script.
 ``oc create -f postgres-operator.yml, wait for the pod state to change to complete state.
 oc get po
 NAME               READY   STATUS      RESTARTS   AGE
 pgo-deploy-zl6sz   0/1     Completed   0          24h
 ``
-3. check for the logs and be sure there are no errors in the ansible script.
-4. switch to pgo namespace.
-5. Edit pgo-config configmap and update DisableFSGroup to false .
-6. Restart postgress operator pod. postgres-operator-f7d8c5667-4hhrk
-Reason for above step (5,6):
+- (iii). switch to pgo namespace. 
+- (iv). Edit `pgo-config configmap` and update `DisableFSGroup` to `false` .
+- (v). Restart postgress operator pod. postgres-operator-f7d8c5667-4hhrk
+Reason for above step (iv, v):
 Crunchy PostgreSQL for Kubernetes is set up to work with the "restricted" SCC by default, but we may need to make modifications. In this mode, we will want to ensure that "DisableFSGroup" is set to false mentioned "pgo-config" ConfigMap.
 Making changes to the "pgo-config" ConfigMap, we will have to restart the "postgres-operator" Pod. 
-7. Download the pgo binary mentioned in the below document
+
+- (vi). Download the pgo binary mentioned in the below document
 https://access.crunchydata.com/documentation/postgres-operator/latest/quickstart/
-8. Make sure the pvc are in bound state.
-oc get pvc
+- (vii). Make sure the pvc are in bound state.
+`oc get pvc
 NAME                  STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS      AGE
 hippo                 Bound    pvc-1661d588-2065-43a3-a701-de3247bed97e   20Gi       RWO            ibmc-block-gold   23h
 hippo-pgadmin         Bound    pvc-7c02f063-8eb6-43f2-9862-6d05c929ed2b   20Gi       RWO            ibmc-block-gold   23h
 hippo-pgbr-repo       Bound    pvc-c32515c9-b088-4695-8ac3-245c12d182a6   20Gi       RWO            ibmc-block-gold   23h
 hippotest             Bound    pvc-d8665d40-470e-4a92-aaa8-09000d0bab0c   20Gi       RWO            ibmc-block-gold   23h
 hippotest-pgbr-repo   Bound    pvc-20754790-50f6-4759-9a7a-0463ce2d422f   20Gi       RWO            ibmc-block-gold   23h
-9. Create database using below command.
+`
+- (viii). Create database using below command.
 pgo create cluster -n pgo hippo
 This will create database (pods) in pgo namespace.
-10. To validate run below commands.
-    a . pgo show cluster -n pgo hippo.
-    b.  pgo test -n pgo hippo
+- )ix). To validate run below commands.
+    a .` pgo show cluster -n pgo hippo`
+    b.  `pgo test -n pgo hippo`
+
 Attached is the postgres-operator.yml updated file. (edited) 
 postgres-operator.yml 
 
