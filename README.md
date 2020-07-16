@@ -238,18 +238,19 @@ Making changes to the "pgo-config" ConfigMap, we will have to restart the "postg
 - (vi). Download the pgo binary mentioned in the below document
 https://access.crunchydata.com/documentation/postgres-operator/latest/quickstart/
 - (vii). Make sure the pvc are in bound state.
-`oc get pvc
-NAME                  STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS      AGE
-hippo                 Bound    pvc-1661d588-2065-43a3-a701-de3247bed97e   20Gi       RWO            ibmc-block-gold   23h
+`oc get pvc`
+`NAME                  STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS      AGE`
+`hippo                 Bound    pvc-1661d588-2065-43a3-a701-de3247bed97e   20Gi       RWO            ibmc-block-gold   23h`
 hippo-pgadmin         Bound    pvc-7c02f063-8eb6-43f2-9862-6d05c929ed2b   20Gi       RWO            ibmc-block-gold   23h
 hippo-pgbr-repo       Bound    pvc-c32515c9-b088-4695-8ac3-245c12d182a6   20Gi       RWO            ibmc-block-gold   23h
 hippotest             Bound    pvc-d8665d40-470e-4a92-aaa8-09000d0bab0c   20Gi       RWO            ibmc-block-gold   23h
 hippotest-pgbr-repo   Bound    pvc-20754790-50f6-4759-9a7a-0463ce2d422f   20Gi       RWO            ibmc-block-gold   23h
 `
 - (viii). Create database using below command.
-pgo create cluster -n pgo hippo
+`pgo create cluster -n pgo hippo`
 This will create database (pods) in pgo namespace.
-- )ix). To validate run below commands.
+
+- (ix). To validate run below commands.
     a .` pgo show cluster -n pgo hippo`
     b.  `pgo test -n pgo hippo`
 
