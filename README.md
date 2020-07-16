@@ -255,7 +255,7 @@ This will create database (pods) in pgo namespace.
     b.  ``pgo test -n pgo hippo``
 
 Attached is the postgres-operator.yml updated file. (edited) 
-postgres-operator.yml 
+![](postgres-operator.yml)
 
 
 ### Step 2: Create a CrunchyDB cluster and database
