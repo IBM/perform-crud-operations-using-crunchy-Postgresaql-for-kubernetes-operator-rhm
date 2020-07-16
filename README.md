@@ -130,15 +130,13 @@ Completing this tutorial should take about 30 minutes.
 1. [Red Hat Marketplace Account](https://marketplace.redhat.com/en-us/registration/om).
 2. [IBM Managed Red Hat OpenShift Cluster](https://cloud.ibm.com/kubernetes/catalog/create?platformType=openshift). 
 For all operators being installed from RHM, IBM managed ROKS OpenShift cluster version 4.3 or higher is mandatory. Please set up Classic cluster using the instructions from below URL.
-3. [OC & kubectl CLI](https://docs.openshift.com/container-platform/3.6/cli_reference/get_started_cli.html).
+3. [Setting up OpenShift Cluster](https://cloud.ibm.com/docs/openshift?topic=openshift-getting-started)
+4. [OC & kubectl CLI](https://docs.openshift.com/container-platform/3.6/cli_reference/get_started_cli.html).
 
 # Steps
 
 ### Step 1: Configure Openshift Cluster(ROKS) with Redhat Market Place
 # How to install & get started using the Crunchy Postgres operator on RedHat OpenShift cluster(ROKS)
-
-
-[Setting up OpenShift Cluster](https://cloud.ibm.com/docs/openshift?topic=openshift-getting-started)
 
 ## Next Step - Access the RedHat OpenShift Container Platform (Web Console)
 
