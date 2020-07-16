@@ -255,10 +255,8 @@ This will create database (pods) in pgo namespace.
     b.  ``pgo test -n pgo hippo``
 
 Attached is the postgres-operator.yml updated file. (edited) 
-![](postgres-operator.yml)
+[Download postgres-operator.yml](postgres-operator.yml)
 
-
-### Step 2: Create a CrunchyDB cluster and database
 ### Step 3: Access the cluster on your localhost
 
 - Let us view the results of the commands we ran in the earlier steps via the pgAdmin 4 console. The console can be accessed at localhost with port forwarding.
