@@ -129,7 +129,7 @@ To login you would require token which can be genrated after you login to Opensh
 ![](doc/source/images/Login-Token.png)
 
 - Once you login you would see a similar screen as shown below.
-![](doc/source/images/CLI-Login)
+![](doc/source/images/CLI-Login.png)
 
 ### Step 2: Deploy CrunchyDB Operator on OpenShift Cluster
 
