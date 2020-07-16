@@ -222,9 +222,11 @@ To login you would require token which can be genrated after you login to Opensh
 ### Step 3: Create and Deploy CrunchyDB Operator on OpenShift Cluster and Create a database.
 
 - (i). Use the new namespace where we have isntalled the Crunchy Postgres operator.
-- (ii). Run the below command in CLI(command line Iterface). Once it runs successfully, check for the logs and be sure there are no errors in the ansible script.
-``oc create -f postgres-operator.yml, wait for the pod state to change to complete state.
-oc get po
+- (ii). Run the below command in CLI(command line Iterface). Once it runs successfully, check for the logs and be sure there are no errors in the ansible script. Wait for the pod state to change to complete state.
+
+``oc create -f postgres-operator.yml`` 
+
+``oc get po
 NAME               READY   STATUS      RESTARTS   AGE
 pgo-deploy-zl6sz   0/1     Completed   0          24h
 ``
@@ -233,9 +235,10 @@ pgo-deploy-zl6sz   0/1     Completed   0          24h
 - (iv). Edit `pgo-config configmap` and update `DisableFSGroup` to `false`.
 
 - (v). Restart postgress operator pod. postgres-operator-f7d8c5667-4hhrk
-Reason for above step (iv, v):
-Crunchy PostgreSQL for Kubernetes is set up to work with the "restricted" SCC by default, but we may need to make modifications. In this mode, we will want to ensure that "DisableFSGroup" is set to false mentioned "pgo-config" ConfigMap.
-Making changes to the "pgo-config" ConfigMap, we will have to restart the "postgres-operator" Pod. 
+
+`Note:`Reason for above step (iv, v):
+``Crunchy PostgreSQL for Kubernetes is set up to work with the "restricted" SCC by default, but we may need to make modifications. In this mode, we will want to ensure that "DisableFSGroup" is set to false mentioned "pgo-config" ConfigMap.
+Making changes to the "pgo-config" ConfigMap, we will have to restart the "postgres-operator" Pod. ``
 
 - (vi). Download the pgo binary mentioned in the [document URL](https://access.crunchydata.com/documentation/postgres-operator/latest/quickstart/)
 
