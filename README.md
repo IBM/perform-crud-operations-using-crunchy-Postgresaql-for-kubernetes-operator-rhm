@@ -123,8 +123,6 @@ When you have completed this tutorial, you will understand how to:
 Completing this tutorial should take about 30 minutes.
 
 
-
-
 # Pre-requisites
 
 1. [Red Hat Marketplace Account](https://marketplace.redhat.com/en-us/registration/om).
@@ -212,7 +210,7 @@ For all operators being installed from RHM, IBM managed ROKS OpenShift cluster v
 
 ![](doc/source/images/installed-operator.png)
 
-### Step 3: Connect to the Openshift Cluster in CLI (command Line Interface)
+### Step 3: Connect to the Openshift Cluster in CLI (Command Line Interface)
 
 - Login to the ROKS(IBM Managed) Openshift cluster through CLI(command line Iterface). 
 To login you would require token which can be genrated after you login to Openshift Cluster web console. See below screenshot to `copy the path`.
@@ -221,9 +219,8 @@ To login you would require token which can be genrated after you login to Opensh
 - A new window will open with the login token details. See below screenshot for details. Copy the login token as per the below screenshot.
 ![](doc/source/images/Login-Token.png)
 
-- Once you login you would see a similar screen as shown below.
+- In terminal, paste the login command, Once you login you would see a similar screen as shown below.
 ![](doc/source/images/CLI-Login.png)
-
 
 ### Step 4: Create and Deploy CrunchyDB Operator on OpenShift Cluster and Create a database.
 
