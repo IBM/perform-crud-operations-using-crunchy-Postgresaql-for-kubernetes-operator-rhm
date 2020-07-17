@@ -132,81 +132,87 @@ Completing this tutorial should take about 30 minutes.
 For all operators being installed from RHM, IBM managed ROKS OpenShift cluster version 4.3 or higher is mandatory. Please set up Classic cluster using the instructions from this URL.[Setting up OpenShift Cluster](https://cloud.ibm.com/docs/openshift?topic=openshift-getting-started)
 3. [OC & kubectl CLI](https://docs.openshift.com/container-platform/3.6/cli_reference/get_started_cli.html).
 
-# Steps - How to install & get started using the Crunchy Postgres operator on RedHat OpenShift cluster(ROKS)
+# Steps
 
 ### Step 1: Configure Openshift Cluster(ROKS) with Redhat Market Place
 
-## Next Step - Access the RedHat OpenShift Container Platform (Web Console)
+#### Step 1.1: Download OpenShift Command Line Interface (CLI) binary
 
-Follow the steps below to launch the cluster console which is also called RedHat OpenShift Container Platform.
+- Follow the steps below to launch the cluster console which is also called RedHat OpenShift Container Platform.
 
-Login to IBM Cloud Account and navigate to Dashboard
+- Login to [IBM Cloud Account](https://cloud.ibm.com/) and navigate to Dashboard as shown.
 
-![](doc/source/images/dashboard.png)
+![rhm](doc/source/images/dashboard.png)
 
-Click on Clusters and select the cluster which you have created under prerequisites. In our case, cluster name is cp-rhm-poc.
+- Click on **Clusters** and select the cluster which you have created under prerequisites. In our case, cluster name is **cp-rhm-poc**.
 
 ![](doc/source/images/cluster.png)
 
-After you launch the cluster, click on OpenShift web console on the top right hand side.
+- After you launch the cluster, click on **OpenShift web console** on the top right hand side.
 
 ![](doc/source/images/web-console.png)
 
-We can see the RedHat OpenShift Container Platform (Web Console). Click on question mark ikon on the top right hand side and select Command Line Tools. 
+- We can see the RedHat OpenShift Container Platform (Web Console). Click on **question mark icon** on the top right hand side and select **Command Line Tools**. 
 
 ![](doc/source/images/cmd-line-tools.png)
 
-Navigate to the section `oc - OpenShift Command Line Interface (CLI)` and download the respective oc binary onto your local system. This is needed to manage OpenShift projects from a terminal and is further extended to natively support OpenShift Container Platform features.
+- Navigate to the section `oc - OpenShift Command Line Interface (CLI)` and download the respective oc binary onto your local system. 
+
+**NOTE: This is needed to manage OpenShift projects from a terminal and is further extended to natively support OpenShift Container Platform features.**
 
 ![](doc/source/images/oc-binary.png)
 
-We are all set to proceed to next step which is to register the OpenShift cluster on RedHat Marketplace platform. This is mandatory to install any operators from RedHat Marketplace platform using the OpenShift cluster.
+- We are all set to proceed to next step which is to register the OpenShift cluster on RedHat Marketplace platform. 
 
-## Register the cluster on RedHat Marketplace
+**NOTE: This is mandatory to install any operators from RedHat Marketplace platform using the OpenShift cluster**.
 
-Sign up and login to RHM portal at [Link](https://marketplace.redhat.com/en-us) and click on workspace and then click on cluster. We need to add our new OpenShift cluster and register it on RHM platform.
+#### Step 1.2: Register the cluster on RedHat Marketplace
+
+- Sign up and login to RHM portal at [Link](https://marketplace.redhat.com/en-us) and click on **workspace** and then click on cluster. We need to add our new OpenShift cluster and register it on RHM platform.
 
 ![](doc/source/images/add-cluster.png)
 
-Update the cluster name, generate the pull secret as per the instructions and save it. 
+- Update the **cluster name**, generate the pull secret as per the instructions and save it as shown.
 
 ![](doc/source/images/cluster-details.png)
 
-Copy the curl command which starts with `curl -sL https` and append the pull secret towards the end. The entire script should be handy to be used in next step.
+- Copy the curl command which starts with `curl -sL https` and append the pull secret towards the end. 
 
-We need to start the cluster first to register it. Open a command prompt and type oc login, update the username and password which are used for accessing the cluster and hit enter. 
+**NOTE: The entire script should be handy to be used in next step.**
+
+- We need to start the cluster first to register it. Open a terminal and type `oc login`, update the `username` and `password` which are used for accessing the cluster and hit enter. 
 
 ![](doc/source/images/start-cluster.png)
 
-The cluster is up and running at this point. We need to run the entire script which is from previous step and hit enter. It will take a couple of mins and we can see that we have successfully registered the cluster on RHM portal.
+- The cluster is up and running at this point. We need to run the entire script which is from previous step and hit enter. It will take a couple of mins and we can see that we have successfully registered the cluster on RHM portal.
 
 ![](doc/source/images/register-cluster.png)
 
-## Create a project in web console
+#### Step 1.3: Create a project in web console
 
-We need to create a project to be used and managed from command line. Click on Create Project and give a name as `crunchy-project`.
+- We need to create a project to be used and managed from command line. Click on **Create Project** and give a name as `Cockroachdb-test-project`.
 
-![](doc/source/images/create-project.png)
+![rhm](doc/source/images/create-project.png)
 
-## Install the operator
+### Step 2: Install the CrunchyDB Operator
 
-Navigate to OpenShift web console which was launched during previous step. Select operatorhub under Operators and type 'Crunchy' in the search bar and hit 
+- Navigate to **OpenShift web console** which was launched during previous step. Select **operatorhub** under Operators and type 'Crunchy' in the search bar.
 
 ![](doc/source/images/install-operator1.png)
 
-Click on Crunchy Postgres Operator (non custom) and hit install.
+- Click on **Crunchy Postgres Operator** (non custom) and click **install**.
 
 ![](doc/source/images/install.png)
 
-Create Operator Subscription by choosing All namespaces or specific namespace (select default project crunchy-project) and hit subscribe.
+- Create Operator Subscription by choosing All namespaces or specific namespace (select default project crunchy-project) and click **subscribe**.
 
 ![](doc/source/images/subscribe1.png)
 
-After a couple of minutes, the operator gets installed on the cluster. We can verify by clicking on Installed Operators under `Operators` and see that the operator is successfully installed with status showing as Succeeded.
+- After a couple of minutes, the operator gets installed on the cluster. We can verify by clicking on Installed Operators under `Operators` and see that the operator is successfully installed with status showing as Succeeded.
 
 ![](doc/source/images/installed-operator.png)
 
-## Connect to the Openshift Cluster in CLI (command Line Interface)
+### Step 3: Connect to the Openshift Cluster in CLI (command Line Interface)
 
 - Login to the ROKS(IBM Managed) Openshift cluster through CLI(command line Iterface). 
 To login you would require token which can be genrated after you login to Openshift Cluster web console. See below screenshot to `copy the path`.
@@ -219,7 +225,7 @@ To login you would require token which can be genrated after you login to Opensh
 ![](doc/source/images/CLI-Login.png)
 
 
-### Step 3: Create and Deploy CrunchyDB Operator on OpenShift Cluster and Create a database.
+### Step 4: Create and Deploy CrunchyDB Operator on OpenShift Cluster and Create a database.
 
 - (i). Use the new namespace where we have isntalled the Crunchy Postgres operator.
 - (ii). Run the below command in CLI(command line Iterface). Once it runs successfully, check for the logs and be sure there are no errors in the ansible script. Wait for the pod state to change to complete state.
@@ -257,7 +263,7 @@ This will create database (pods) in pgo namespace.
 Attached is the postgres-operator.yml updated file. (edited) 
 [Download postgres-operator.yml](postgres-operator.yml)
 
-### Step 3: Access the cluster on your localhost
+### Step 5: Access the cluster on your localhost
 
 - Let us view the results of the commands we ran in the earlier steps via the pgAdmin 4 console. The console can be accessed at localhost with port forwarding.
 
@@ -287,7 +293,7 @@ Forwarding from [::1]:5050 -> 5050
 
 ![](doc/source/images/pgadmin4.png)
 
-### Step 4: Perform CRUD Operations on CrunchyDB using python
+### Step 6: Perform CRUD Operations on CrunchyDB using python
 
 - Once we have the CrunchyDB UP and running, `user` and `database` created, we can now explore the CRUD operations on Crunchy PostgreSQL in a python runtime using Jupyter Notebook.
 
