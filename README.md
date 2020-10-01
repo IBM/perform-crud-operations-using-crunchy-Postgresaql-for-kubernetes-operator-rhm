@@ -1,6 +1,5 @@
 ---
 #Front matter (metadata).
-abstract:               # REQUIRED
 
 authors:
  - name: "Rahul Reddy Ravipally"
@@ -12,7 +11,8 @@ authors:
  - name: "Manjula G. Hosurmath"
    email: "mhosurma@in.ibm.com"
 
-completed_date: 2020-07-03
+completed_date: "2020-09-30"
+last_updated:  "2020-09-30"
 
 components:
 - slug: "Crunchy PostgreSQL for Kubernetes"
@@ -27,78 +27,44 @@ components:
 draft: true|false       # REQUIRED
 
 excerpt:                # REQUIRED
-
+abstract:               # REQUIRED
 keywords:               # REQUIRED - comma separated list
 
-last_updated:           # REQUIRED - Note: date format is YYYY-MM-DD
-
-primary_tag:          # REQUIRED - Note: Choose only only one primary tag. Multiple primary tags will result in automation failure. Additional non-primary tags can be added below.
-
-pta:                    # REQUIRED - Note: can be only one
-# For a full list of options see https://github.ibm.com/IBMCode/Definitions/blob/master/primary-technology-area.yml
-# Use the "slug" value found at the link above to include it in this content.
-# Example (remove the # to uncomment):
- # - "cloud, container, and infrastructure"
-
-pwg:                    # REQUIRED - Note: can be one or many
-# For a full list of options see https://github.ibm.com/IBMCode/Definitions/blob/master/portfolio-working-group.yml
-# Use the "slug" value found at the link above to include it in this content.
-# Example (remove the # to uncomment):
-# - "containers"
+primary_tag: databases
 
 related_content:        # OPTIONAL - Note: zero or more related content
   - type: announcements|articles|blogs|patterns|series|tutorials|videos
     slug:
 
 related_links:           # OPTIONAL - Note: zero or more related links
-  - title:
-    url:
-    description:
-
-runtimes:               # OPTIONAL - Note: Select runtimes from the complete set of runtimes below. Do not create new runtimes. Only use runtimes specifically in use by your content.
-# For a full list of options see https://github.ibm.com/IBMCode/Definitions/blob/master/runtimes.yml
-# Use the "slug" value found at the link above to include it in this content.
-# Example (remove the # to uncomment):
- # - "asp.net 5"
-
-series:                 # OPTIONAL
- - type:
-   slug:
-
-services:               # OPTIONAL - Note: please select services from the complete set of services below. Do not create new services. Only use services specifically in use by your content.
-# For a full list of options see https://github.ibm.com/IBMCode/Definitions/blob/master/services.yml
-# Use the "slug" value found at the link above to include it in this content.
-# Example (remove the # to uncomment):
-# - "blockchain"
-
-subtitle:               # REQUIRED
+  - title: "Crunchy PostgreSQL for Kubernetes"
+    url: "https://marketplace.redhat.com/en-us/products/crunchy-postgresql-for-kubernetes"
+    # description:
+  - title: "Red Hat Marketplace"
+    url: ""
+    # description: 
 
 tags:
-# Please select tags from the complete set of tags below. Do not create new tags. Only use tags specifically targeted for your content. If your content could match all tags (for example cloud, hybrid, and on-prem) then do not tag it with those tags. Less is more.
-# For a full list of options see https://github.ibm.com/IBMCode/Definitions/blob/master/tags.yml
-# Use the "slug" value found at the link above to include it in this content.
-# Example (remove the # to uncomment):
- # - "blockchain"
+ - "databases"
+ - "containers"
 
-title:                  # REQUIRED
-
-translators:             # OPTIONAL - Note: can be one or more
-  - name:
-    email:
-
-type: tutorial
+title: Perform CRUD operations using Crunchy PostgreSQL for Kubernetes
+subtitle: Perform CRUD operations using Crunchy PostgreSQL for Kubernetes on Red Hat Marketplace
+meta_title: Perform CRUD operations using Crunchy PostgreSQL for Kubernetes
 
 ---
 
 # Perform CRUD operations using Crunchy PostgreSQL for Kubernetes Operator on Red Hat Marketplace
 
-In this tutorial, we demonstrate how to install and get started using the Crunchy Postgres operator operator from RedHat Marketplace (RHM) and also we will learn how to Perform CRUD operations using Crunchy PostgreSQL for Kubernetes Operator hosted on Red Hat marketplace using python runtime and Jupyter notebook.
+In this tutorial, we demonstrate how to install and get started using the Crunchy Postgres operator from RedHat Marketplace (RHM). Also, learn how to perform CRUD operations using the Crunchy PostgreSQL for Kubernetes operator hosted on Red Hat marketplace using a Python runtime and Jupyter notebook.
 
 # About Crunchy PostgreSQL for Kubernetes Operator
 
 Crunchy PostgreSQL for OpenShift Container Platform (OCP) includes Crunchy PostgreSQL Operator and Crunchy PostgreSQL Container Suite supporting hybrid cloud, open source PostgreSQL-as-a-Service. [Learn more](https://marketplace.redhat.com/en-us/products/crunchy-postgresql-for-kubernetes).
-The postgres-operator is a controller that runs within a Kubernetes cluster that provides a means to deploy and manage PostgreSQL clusters.
-Use the postgres-operator to:
+
+The PostgreSQL-operator is a controller that runs within a Kubernetes cluster that provides a means to deploy and manage PostgreSQL clusters.
+
+Use the PostgreSQL operator to:
 - deploy PostgreSQL containers including streaming replication clusters
 - scale up PostgreSQL clusters with extra replicas
 - add pgpool, pgbouncer, and metrics sidecars to PostgreSQL clusters
@@ -113,7 +79,7 @@ Use the postgres-operator to:
 
 When you have completed this tutorial, you will understand how to:
 
-* Deploy CrunchyDB Operator on OpenShift Cluster
+* Deploy a CrunchyDB Operator on OpenShift Cluster
 * Create a CrunchyDB cluster and database
 * Access the cluster on your localhost
 * Perform Create, Read, Update and Delete Operations on CrunchyDB
@@ -122,69 +88,76 @@ When you have completed this tutorial, you will understand how to:
 
 Completing this tutorial should take about 30 minutes.
 
+# Prerequisites
 
-# Pre-requisites
+To complete the steps in this tutorial, you will need:
 
-1. [Red Hat Marketplace Account](https://marketplace.redhat.com/en-us/registration/om).
-2. [IBM Managed Red Hat OpenShift Cluster](https://cloud.ibm.com/kubernetes/catalog/create?platformType=openshift).
-3. For all operators being installed from RHM, IBM managed ROKS OpenShift cluster version 4.3 or higher is mandatory. Please set up Classic cluster using the instructions from this URL:
-[Setting up OpenShift Cluster](https://cloud.ibm.com/docs/openshift?topic=openshift-getting-started)
-4. [OC & kubectl CLI](https://docs.openshift.com/container-platform/3.6/cli_reference/get_started_cli.html).
+1. A [Red Hat Marketplace Account](https://marketplace.redhat.com/en-us/registration/om)
+2. A [Red Hat OpenShift Cluster](https://cloud.ibm.com/kubernetes/catalog/create?platformType=openshift). Operators from the Red Hat Marketplace, requore an OpenShift cluster version 4.3 or higher. [Set up a classic cluster](https://cloud.ibm.com/docs/openshift?topic=openshift-getting-started).
+3. [OpenShift container & kubectl CLI](https://docs.openshift.com/container-platform/3.6/cli_reference/get_started_cli.html)
+4. Access to a Jupyter Notebook. You can [install a Jupyter Notebook from python-pip](https://jupyter.org/install) or use a tool such as [Anaconda](https://www.anaconda.com/products/individual) to open the Jupyter Notebook
 
 # Steps
 
 ### Step 1: Install the CrunchyDB Operator from Red Hat Marketplace on OpenShift Cluster
 
-- Steps to Deploy CruchyDB Operator from Red Hat Marketplace on a OpenShift Cluster can be found here,
+You need to complete the steps in this tutorial to deploy a CruchyDB Operator from Red Hat Marketplace on a OpenShift Cluster:
   - [Steps to Deploy CrunchyDB Operator](https://github.com/IBM/rhm-crunchydb-operator-install-steps)
   
-### Step 2: Perform CRUD Operations on CrunchyDB using python
+### Step 2: Perform CRUD operations on CrunchyDB using Python
 
-- Once we have the CrunchyDB UP and running, `user` and `database` created, we can now explore the CRUD operations on Crunchy PostgreSQL in a python runtime using Jupyter Notebook.
+Once you have the CrunchyDB Operator up and running and you've created a user and database, you can now explore the CRUD operations on Crunchy PostgreSQL in a Python runtime using a Jupyter Notebook.
 
-- In Terminal run the following command to port forward `5432` port from the OpenShift cluster which we will be using in our Jupyter Notebook to establish a connection with the Crunchy PostgreSQL instance.
-```bash
-$ kubectl port-forward -n pgo svc/hippo 5432:5432 
-```
+1. In your terminal, run the following command to port forward the `5432` port from the OpenShift cluster. This port is used in our Jupyter Notebook to establish a connection with the Crunchy PostgreSQL instance.
 
-```
-Forwarding from 127.0.0.1:5432 -> 5432
-Forwarding from [::1]:5432 -> 5432
-```
+    ```bash
+    $ kubectl port-forward -n pgo svc/hippo 5432:5432 
+    ```
 
-- We will be working with Jupyter Notebook, you can use tools like [Anaconda](https://www.anaconda.com/products/individual) to open the Jupyter Notebook or [install Jupyter Notebook from python-pip](https://jupyter.org/install).
+    ```
+    Forwarding from 127.0.0.1:5432 -> 5432
+    Forwarding from [::1]:5432 -> 5432
+    ```
 
-- Download and open the notebook [CrunchyDB CRUD Operations.ipynb](CrunchyDB%20CRUD%20Operations.ipynb) in your local machine.
+1. Download and open the Jupyter notebook [CrunchyDB CRUD Operations.ipynb](CrunchyDB%20CRUD%20Operations.ipynb) on your local machine.
 
-- Click on the **Cell** tab and click on **Run All** as shown.
+1. Click on the **Cell** tab and select **Run All**.
 
-![](doc/source/images/run.png)
+    ![](doc/source/images/run.png)
 
-- You can now follow the notebook instructions for more details on what is happening in each cell.
+    You can now follow the notebook instructions for more details on what is happening in each cell.
 
-- After we have execuited the notebook, we can verify the table in the pgAdmin 4 console. 
+1. After you execute the Jupyter notebook, you can verify the table in the pgAdmin 4 console. To access pgAdmin 4, you can set up a `port-forward` to the service<!--EM: What service? And what is pgAdmin 4??-->, which follows the pattern `<clusterName>-pgadmin`, to port `5050`:
 
-- - To access pgAdmin 4, you can set up a `port-forward` to the Service, which follows the pattern `<clusterName>-pgadmin`, to port `5050`:
-```bash
-$ kubectl port-forward -n pgo svc/hippo-pgadmin 5050:5050 
-```
+    ```bash
+    $ kubectl port-forward -n pgo svc/hippo-pgadmin 5050:5050 
+    ```
+    
+    ```
+    Forwarding from 127.0.0.1:5050 -> 5050
+    Forwarding from [::1]:5050 -> 5050
+    ```
 
-```
-Forwarding from 127.0.0.1:5050 -> 5050
-Forwarding from [::1]:5050 -> 5050
-```
+1. In the pgAdmin 4 console, expand the following attributes:
+    
+    * your `cluster` &mdash; for example, in our case ,`cpdemo`
+    * `Databases`
+    * `database_name`
+    * `Schemas`
+    * `username` (eg: in our case `hippo`)
+    * `Tables` 
+    
+    Under Tables, you can now see the `accounts` table that we created from the notebook. Right click on the `accounts` table and select **View/Edit Data > All Rows**, and the table with all rows will be displayed.
 
-- In the pgAdmin 4 console, expand your `cluster` (eg: in our case `cpdemo`), expand `Databases`, expand `database_name`, expand `Schemas`, expand `username` (eg: in our case `hippo`), expand `Tables`, you can now see the `accounts` table that we created from the notebook. Right click on the `accounts` table and select **View/Edit Data > All Rows** and the table with all rows will be displayed as shown.
+    ![](doc/source/images/view.png)
 
-![](doc/source/images/view.png)
+    >NOTE: You can view this table after each CRUD operation performed in notebook in order to visualize the changes.
 
->NOTE: You can view this table after each CRUD operation performed in notebook in order to visualize the changes.
-
-![](doc/source/images/results.png) 
+    ![](doc/source/images/results.png) 
 
 # Summary
 
-In this tutorial you have learnt the basics of how to use `Crunchy postgreSQL for kubernetes Operator` deployed on OpenShift Cluster. You have learnt how to perform CRUD operations using the `Crunchy postgreSQL for kubernetes Operator` in python.
+In this tutorial, you have learned the basics of how to use the Crunchy PostgreSQL for Kubernetes operator deployed on OpenShift Cluster and walked through a quick exercise of how to perform CRUD operations using the Crunchy PostgreSQL for Kubernetes operator in Python.
 
 # Reference
 
